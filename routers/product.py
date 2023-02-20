@@ -4,7 +4,6 @@ from fastapi.responses import JSONResponse
 
 from typing import List
 from config.database import Session
-from models.product import Product
 from fastapi.encoders import jsonable_encoder
 from service.product import ProductService
 from schemas.product import Product
