@@ -1,4 +1,4 @@
-from models.movie import Product
+from models.product import Product
 from schemas.product import Product
 
 class ProductService():

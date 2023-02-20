@@ -11,7 +11,7 @@ from schemas.product import Product
 
 product_router = APIRouter()
 
-@product_router.get('/products', tags=['products'], response_mode=List[Product], status_code=200)
+@product_router.get('/products', tags=['products'], response_model=List[Product], status_code=200)
 def get_product() -> List[Product]:
     db = Session()
     result = ProductService(db).get_products()
