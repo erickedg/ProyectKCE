@@ -10,8 +10,8 @@ class UsersSevice():
         result = self.db.query(UsersModel).filter(UsersModel.iduser == id).first()
         return result
 
-    def create_user(self):
-        new_user = UsersModel(**Users.dict())
+    def create_user(self, users:Users):
+        new_user = UsersModel(**users.dict())
         self.db.add(new_user)
         self.db.commit()
         return
