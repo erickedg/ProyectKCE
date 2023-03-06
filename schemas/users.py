@@ -6,3 +6,12 @@ class Users(BaseModel):
     username: str = Field(min_length=1, max_length=20)
     status: bool = True
     
+    class Config:
+        schema_extra = {
+            "example": {
+                "iduser": 0,
+                "name": "Nombre",
+                "username": "Usuario",
+                "status": True
+            }
+        }
