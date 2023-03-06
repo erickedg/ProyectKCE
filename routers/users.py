@@ -21,10 +21,11 @@ def get_user(iduser:int) -> Users:
     result = UsersSevice(db).get_users(iduser)
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-@users_router.post('/users', tags=['Users'], status_code=200)
-def create_user() -> dict:
+
+@users_router.post('/users', tags=['Users'], response_model=dict, status_code=201)
+def create_user(user: Users) -> dict:
     db = Session()
-    result = UsersSevice(db).create_user()
+    UsersSevice(db).create_user(user)
     return JSONResponse(status_code=201, content={"message": "Se ha registrado el usuario con exito"})
 
 @users_router.put('/users/{iduser}', tags=['Users'], status_code=200)

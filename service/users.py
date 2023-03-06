@@ -2,6 +2,9 @@ from models.users import Users as UsersModel
 from schemas.users import Users
 
 class UsersSevice():
+    def __init__(self, db) -> None:
+        self.db = db
+        
     def get_users(self):
         result = self.db.query(UsersModel).all()
         return result
