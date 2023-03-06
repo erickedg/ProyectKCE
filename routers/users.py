@@ -15,25 +15,26 @@ def get_users() -> List[Users]:
     result = UsersSevice(db).get_users()
     return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-@users_router.get('/users/{iduser}', tags=['Users'], response_model=List[Users], estatus_code=200)
+@users_router.get('/users/{iduser}', tags=['Users'], response_model=List[Users], status_code=200)
 def get_user(iduser:int) -> Users:
     db = Session()
     result = UsersSevice(db).get_users(iduser)
+    return JSONResponse(status_code=200, content=jsonable_encoder(result))
 
-@users_router.post('/users', tags=['Users'], estatus_code=200)
-def create_user():
+@users_router.post('/users', tags=['Users'], status_code=200)
+def create_user() -> dict:
     db = Session()
     result = UsersSevice(db).create_user()
     return JSONResponse(status_code=201, content={"message": "Se ha registrado el usuario con exito"})
 
 @users_router.put('/users/{iduser}', tags=['Users'], status_code=200)
-def update_user(iduser:int):
+def update_user(iduser:int) -> dict:
     db = Session()
     result = UsersSevice(db).update_user(iduser)
     return JSONResponse(status_code=201, content={"message": "Se ha a actualizado el usuario"})
 
 @users_router.delete('/users/{iduser}', tags=['Users'], status_code=200)
-def delete_user(iduser:int):
+def delete_user(iduser:int) -> dict:
     db = Session()
     result = UsersSevice(db).delete_user(iduser)
     return JSONResponse(status_code=201, content={"message" "Se elimino el usuario"})
